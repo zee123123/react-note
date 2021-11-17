@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Note =({note}) => {
+const NoteContent =({note}) => {
     return (
       <>
         <li>{note.content}</li>
@@ -9,4 +9,4 @@ const Note =({note}) => {
 };
 
 
-export default Note;
+export default NoteContent;

@@ -1,4 +1,4 @@
-import Note from "./components/Note";
+import NoteContent from "./components/NoteContent";
 
 const App = ({ notes }) => {
   return (
@@ -6,7 +6,7 @@ const App = ({ notes }) => {
       <h1>Notes</h1>
       <ul>
         {notes.map((note) => (
-          <Note note={note}></Note>
+          <NoteContent note={note}></NoteContent>
         ))}
       </ul>
     </>
