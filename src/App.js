@@ -4,8 +4,11 @@ import { useState } from 'react';
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes);
   const [newNote, setNewNote] = useState('a new note...');
+  const [showAll, setShowAll] = useState(true);
 
-  const onChangeHandler = (event) => {
+  const notesToShow = showAll? notes: notes.filter(note => note.important);
+
+  const changeListener = (event) => {
     event.preventDefault();
     console.log("Event", event);
     console.log('Event.target', event.target);
@@ -29,14 +32,17 @@ const App = (props) => {
     <div>
       <h1>Notes</h1>
       <ul>
-        {notes.map((note) => (
+        {/* show content */}
+        {notesToShow.map((note) => (
           <NoteContent key={note.id} note={note} />
         ))}
       </ul>
       <form onSubmit={submitHandler}>
-        <input value={newNote} onChange={onChangeHandler}/>
+        <input value={newNote} onChange={changeListener}/>
         <button type='submit'>Insert your note.</button>
       </form>
+    <br />
+      <button onClick={() => setShowAll(!showAll)}>show {showAll?'all':'important'} notes</button>
     </div>
   );
 };
